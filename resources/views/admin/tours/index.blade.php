@@ -53,7 +53,7 @@
                                                             <a href="{{ route('tour.show', $tour) }}"
                                                                 class="line-clamp-1 text-primary text-capitalize">{{ $tour->title }}</a>
                                                         </td>
-                                                        <td>{{ $tour->location }}</td>
+                                                        <td>{{ $tour->location->name }}</td>
                                                         <td>{{ $tour->duration }}</td>
                                                         <td>{{ $tour->number_of_individuals }}</td>
                                                         <td>৳{{ $tour->price }}</td>

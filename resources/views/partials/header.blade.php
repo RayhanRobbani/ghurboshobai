@@ -23,7 +23,7 @@
                             <!-- Logo-->
                             <div class="logo">
                                 <a href="{{ route('home') }}"><img src="/assets/images/logo/logo.png" alt="logo"
-                                        class="changeLogo" style="width: 100px;"></a>
+                                        class="changeLogo" height="70px"></a>
                             </div>
                             <div class="header-right-three pl-15 d-none d-lg-flex">
                                 <div class="lang">
@@ -36,9 +36,17 @@
                                         <i class="ri-shopping-cart-line"></i>
                                     </a> --}}
                                     @auth
-                                        <div class="sign-btn">
-                                            <a href="{{ route('dashboard') }}" class="btn-secondary-sm radius-30">Dashboard</a>
-                                        </div>
+                                        @role('admin')
+                                            <div class="sign-btn">
+                                                <a href="{{ route('admin.dashboard') }}"
+                                                    class="btn-secondary-sm radius-30">Dashboard</a>
+                                            </div>
+                                        @else
+                                            <div class="sign-btn">
+                                                <a href="{{ route('dashboard') }}"
+                                                    class="btn-secondary-sm radius-30">Dashboard</a>
+                                            </div>
+                                        @endrole
                                     @else
                                         <div class="sign-btn">
                                             <a href="{{ route('login') }}" class="btn-secondary-sm radius-30">Login</a>
@@ -86,10 +94,16 @@
                                             </li>
                                             <li class="single-list">
                                                 <a href="{{ route('tour.index') }}" class="single">Tours</a>
-                                            </li>                                            <li class="single-list">
+                                            </li>
+                                            <li class="single-list">
                                                 <a href="{{ route('resort.index') }}" class="single">Resorts</a>
-                                            </li>                                            <li class="single-list">
-                                                <a href="{{ route('transportation.index') }}" class="single">Transportations</a>
+                                            </li>
+                                            <li class="single-list">
+                                                <a href="{{ route('cruise.index') }}" class="single">Cruises</a>
+                                            </li>
+                                            <li class="single-list">
+                                                <a href="{{ route('transportation.locations') }}"
+                                                    class="single">Transportations</a>
                                             </li>
                                             <li class="single-list">
                                                 <a href="javascript:void(0)" class="single">Blogs</a>
@@ -110,7 +124,7 @@
                                             </li>
                                         </ul>
                                         <!-- search box -->
-                                        <div class="search-box search-bar d-none d-lg-block">
+                                        {{-- <div class="search-box search-bar d-none d-lg-block">
                                             <div class="header-search">
                                                 <span class="pera">Destination, attraction</span>
                                                 <div class="search-icon">
@@ -120,7 +134,7 @@
                                                     <abbr title="Ctrl">Ctrl +</abbr> k
                                                 </kbd>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </nav>
                             </div>
@@ -141,8 +155,7 @@
                 <i class="ri-search-line"></i>
             </div>
             <div class="modal-search-box">
-                <input type="text" id="searchField" class="search-field"
-                    placeholder="Destination, Agency, Country">
+                <input type="text" id="searchField" class="search-field" placeholder="Destination, Agency, Country">
                 <button id="closeSearch" class="close-search-btn">
                     <kbd class="light-text"> ESC </kbd>
                 </button>

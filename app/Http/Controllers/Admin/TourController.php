@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Tour;
+use App\Models\Location;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class TourController extends Controller
@@ -24,7 +25,9 @@ class TourController extends Controller
      */
     public function create()
     {
-        return view('admin.tours.create');
+        return view('admin.tours.create', [
+            'locations' => Location::orderBy('name', 'asc')->get()
+        ]);
     }
 
     /**
@@ -34,7 +37,7 @@ class TourController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string'],
-            'location' => ['required', 'string'],
+            'location_id' => ['required'],
             'duration' => ['required', 'string'],
             'number_of_individuals' => ['required', 'string'],
             'price' => ['required', 'integer'],
@@ -50,12 +53,23 @@ class TourController extends Controller
             'image_primary' => ['required'],
             'image_secondary_1' => ['required'],
             'image_secondary_2' => ['required'],
-            'image_secondary_3' => ['required']
+            'image_secondary_3' => ['required'],
+            'image_secondary_4' => ['nullable'],
+            'image_secondary_5' => ['nullable'],
+            'image_secondary_6' => ['nullable'],
+            'image_secondary_7' => ['nullable'],
+            'image_secondary_8' => ['nullable'],
+            'image_secondary_9' => ['nullable'],
+            'image_secondary_10' => ['nullable'],
+            'image_secondary_11' => ['nullable'],
+            'image_secondary_12' => ['nullable'],
+            'image_secondary_13' => ['nullable'],
+            'image_secondary_14' => ['nullable']
         ]);
 
         $tour = Tour::create([
             'title' => $request->title,
-            'location' => $request->location,
+            'location_id' => $request->location_id,
             'duration' => $request->duration,
             'number_of_individuals' => $request->number_of_individuals,
             'price' => $request->price,
@@ -106,6 +120,105 @@ class TourController extends Controller
             ]);
         }
 
+        if ($request->hasFile('image_secondary_4')) {
+            $name = $tour->id . '-image_secondary_4-' . time() . '.' . $request->image_secondary_4->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_4'), $name);
+
+            $tour->update([
+                'image_secondary_4' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_5')) {
+            $name = $tour->id . '-image_secondary_5-' . time() . '.' . $request->image_secondary_5->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_5'), $name);
+
+            $tour->update([
+                'image_secondary_5' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_6')) {
+            $name = $tour->id . '-image_secondary_6-' . time() . '.' . $request->image_secondary_6->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_6'), $name);
+
+            $tour->update([
+                'image_secondary_6' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_7')) {
+            $name = $tour->id . '-image_secondary_7-' . time() . '.' . $request->image_secondary_7->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_7'), $name);
+
+            $tour->update([
+                'image_secondary_7' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_8')) {
+            $name = $tour->id . '-image_secondary_8-' . time() . '.' . $request->image_secondary_8->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_8'), $name);
+
+            $tour->update([
+                'image_secondary_8' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_9')) {
+            $name = $tour->id . '-image_secondary_9-' . time() . '.' . $request->image_secondary_9->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_9'), $name);
+
+            $tour->update([
+                'image_secondary_9' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_10')) {
+            $name = $tour->id . '-image_secondary_10-' . time() . '.' . $request->image_secondary_10->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_10'), $name);
+
+            $tour->update([
+                'image_secondary_10' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_11')) {
+            $name = $tour->id . '-image_secondary_11-' . time() . '.' . $request->image_secondary_11->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_11'), $name);
+
+            $tour->update([
+                'image_secondary_11' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_12')) {
+            $name = $tour->id . '-image_secondary_12-' . time() . '.' . $request->image_secondary_12->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_12'), $name);
+
+            $tour->update([
+                'image_secondary_12' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_13')) {
+            $name = $tour->id . '-image_secondary_13-' . time() . '.' . $request->image_secondary_13->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_13'), $name);
+
+            $tour->update([
+                'image_secondary_13' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_14')) {
+            $name = $tour->id . '-image_secondary_14-' . time() . '.' . $request->image_secondary_14->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_14'), $name);
+
+            $tour->update([
+                'image_secondary_14' => $name
+            ]);
+        }
+
         if ($tour) {
             return redirect()->route('admin.tour.index')->with('success', 'Tour added successfully!');
         }
@@ -127,7 +240,8 @@ class TourController extends Controller
     public function edit(Tour $tour)
     {
         return view('admin.tours.edit', [
-            'tour' => $tour
+            'tour' => $tour,
+            'locations' => Location::orderBy('name', 'asc')->get()
         ]);
     }
 
@@ -138,7 +252,7 @@ class TourController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string'],
-            'location' => ['required', 'string'],
+            'location_id' => ['required'],
             'duration' => ['required', 'string'],
             'number_of_individuals' => ['required', 'string'],
             'price' => ['required', 'integer'],
@@ -154,12 +268,23 @@ class TourController extends Controller
             'image_primary' => ['nullable'],
             'image_secondary_1' => ['nullable'],
             'image_secondary_2' => ['nullable'],
-            'image_secondary_3' => ['nullable']
+            'image_secondary_3' => ['nullable'],
+            'image_secondary_4' => ['nullable'],
+            'image_secondary_5' => ['nullable'],
+            'image_secondary_6' => ['nullable'],
+            'image_secondary_7' => ['nullable'],
+            'image_secondary_8' => ['nullable'],
+            'image_secondary_9' => ['nullable'],
+            'image_secondary_10' => ['nullable'],
+            'image_secondary_11' => ['nullable'],
+            'image_secondary_12' => ['nullable'],
+            'image_secondary_13' => ['nullable'],
+            'image_secondary_14' => ['nullable']
         ]);
 
         $tour->update([
             'title' => $request->title,
-            'location' => $request->location,
+            'location_id' => $request->location_id,
             'duration' => $request->duration,
             'number_of_individuals' => $request->number_of_individuals,
             'price' => $request->price,
@@ -226,6 +351,149 @@ class TourController extends Controller
             ]);
         }
 
+        if ($request->hasFile('image_secondary_4')) {
+            if ($tour->image_secondary_4) {
+                Storage::disk('public')->delete('tour/' . $tour->image_secondary_4);
+            }
+
+            $name = $tour->id . '-image_secondary_4-' . time() . '.' . $request->image_secondary_4->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_4'), $name);
+
+            $tour->update([
+                'image_secondary_4' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_5')) {
+            if ($tour->image_secondary_5) {
+                Storage::disk('public')->delete('tour/' . $tour->image_secondary_5);
+            }
+
+            $name = $tour->id . '-image_secondary_5-' . time() . '.' . $request->image_secondary_5->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_5'), $name);
+
+            $tour->update([
+                'image_secondary_5' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_6')) {
+            if ($tour->image_secondary_6) {
+                Storage::disk('public')->delete('tour/' . $tour->image_secondary_6);
+            }
+
+            $name = $tour->id . '-image_secondary_6-' . time() . '.' . $request->image_secondary_6->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_6'), $name);
+
+            $tour->update([
+                'image_secondary_6' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_7')) {
+            if ($tour->image_secondary_7) {
+                Storage::disk('public')->delete('tour/' . $tour->image_secondary_7);
+            }
+
+            $name = $tour->id . '-image_secondary_7-' . time() . '.' . $request->image_secondary_7->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_7'), $name);
+
+            $tour->update([
+                'image_secondary_7' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_8')) {
+            if ($tour->image_secondary_8) {
+                Storage::disk('public')->delete('tour/' . $tour->image_secondary_8);
+            }
+
+            $name = $tour->id . '-image_secondary_8-' . time() . '.' . $request->image_secondary_8->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_8'), $name);
+
+            $tour->update([
+                'image_secondary_8' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_9')) {
+            if ($tour->image_secondary_9) {
+                Storage::disk('public')->delete('tour/' . $tour->image_secondary_9);
+            }
+
+            $name = $tour->id . '-image_secondary_9-' . time() . '.' . $request->image_secondary_9->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_9'), $name);
+
+            $tour->update([
+                'image_secondary_9' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_10')) {
+            if ($tour->image_secondary_10) {
+                Storage::disk('public')->delete('tour/' . $tour->image_secondary_10);
+            }
+
+            $name = $tour->id . '-image_secondary_10-' . time() . '.' . $request->image_secondary_10->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_10'), $name);
+
+            $tour->update([
+                'image_secondary_10' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_11')) {
+            if ($tour->image_secondary_11) {
+                Storage::disk('public')->delete('tour/' . $tour->image_secondary_11);
+            }
+
+            $name = $tour->id . '-image_secondary_11-' . time() . '.' . $request->image_secondary_11->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_11'), $name);
+
+            $tour->update([
+                'image_secondary_11' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_12')) {
+            if ($tour->image_secondary_12) {
+                Storage::disk('public')->delete('tour/' . $tour->image_secondary_12);
+            }
+
+            $name = $tour->id . '-image_secondary_12-' . time() . '.' . $request->image_secondary_12->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_12'), $name);
+
+            $tour->update([
+                'image_secondary_12' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_13')) {
+            if ($tour->image_secondary_13) {
+                Storage::disk('public')->delete('tour/' . $tour->image_secondary_13);
+            }
+
+            $name = $tour->id . '-image_secondary_13-' . time() . '.' . $request->image_secondary_13->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_13'), $name);
+
+            $tour->update([
+                'image_secondary_13' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_14')) {
+            if ($tour->image_secondary_14) {
+                Storage::disk('public')->delete('tour/' . $tour->image_secondary_14);
+            }
+
+            $name = $tour->id . '-image_secondary_14-' . time() . '.' . $request->image_secondary_14->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tour', $request->file('image_secondary_14'), $name);
+
+            $tour->update([
+                'image_secondary_14' => $name
+            ]);
+        }
+
         return redirect()->route('admin.tour.index')->with('success', 'Tour updated successfully!');
     }
 
@@ -248,6 +516,50 @@ class TourController extends Controller
 
         if ($tour->image_secondary_3) {
             Storage::disk('public')->delete('tour/' . $tour->image_secondary_3);
+        }
+
+        if ($tour->image_secondary_4) {
+            Storage::disk('public')->delete('tour/' . $tour->image_secondary_4);
+        }
+
+        if ($tour->image_secondary_5) {
+            Storage::disk('public')->delete('tour/' . $tour->image_secondary_5);
+        }
+
+        if ($tour->image_secondary_6) {
+            Storage::disk('public')->delete('tour/' . $tour->image_secondary_6);
+        }
+
+        if ($tour->image_secondary_7) {
+            Storage::disk('public')->delete('tour/' . $tour->image_secondary_7);
+        }
+
+        if ($tour->image_secondary_8) {
+            Storage::disk('public')->delete('tour/' . $tour->image_secondary_8);
+        }
+
+        if ($tour->image_secondary_9) {
+            Storage::disk('public')->delete('tour/' . $tour->image_secondary_9);
+        }
+
+        if ($tour->image_secondary_10) {
+            Storage::disk('public')->delete('tour/' . $tour->image_secondary_10);
+        }
+
+        if ($tour->image_secondary_11) {
+            Storage::disk('public')->delete('tour/' . $tour->image_secondary_11);
+        }
+
+        if ($tour->image_secondary_12) {
+            Storage::disk('public')->delete('tour/' . $tour->image_secondary_12);
+        }
+
+        if ($tour->image_secondary_13) {
+            Storage::disk('public')->delete('tour/' . $tour->image_secondary_13);
+        }
+
+        if ($tour->image_secondary_14) {
+            Storage::disk('public')->delete('tour/' . $tour->image_secondary_14);
         }
 
         $tour->delete();

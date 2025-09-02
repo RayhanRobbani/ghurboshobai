@@ -39,10 +39,16 @@
 
                                     <div class="col-xl-12 col-lg-12">
                                         <div class="contact-form mb-24">
-                                            <label class="contact-label" for="location">Location <span
+                                            <label class="contact-label" for="location_id">Location <span
                                                     class="text-danger">*</span></label>
-                                            <input class="contact-input" type="text" name="location" id="location"
-                                                placeholder="Location" required>
+                                            <!-- Select2 -->
+                                            <select class="select2 select2-hidden-accessible" tabindex="-1"
+                                                aria-hidden="true" name="location_id" id="location_id" required>
+                                                <option value=""></option>
+                                                @foreach ($locations as $location)
+                                                    <option value="{{ $location->id }}">{{ $location->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 
@@ -77,8 +83,8 @@
                                         <div class="contact-form mb-24">
                                             <label class="contact-label" for="about">About <span
                                                     class="text-danger">*</span></label>
-                                            <textarea class="contact-textarea" name="about" id="about" placeholder="About" cols="3" rows="3"
-                                                required></textarea>
+                                            <textarea class="contact-textarea" name="about" id="about" placeholder="About"
+                                                cols="3" rows="3" required></textarea>
                                         </div>
                                     </div>
 
@@ -86,8 +92,8 @@
                                         <div class="contact-form mb-24">
                                             <label class="contact-label" for="included">Included <span
                                                     class="text-danger">*</span></label>
-                                            <textarea class="contact-textarea" name="included" id="included" placeholder="Included" cols="3" rows="3"
-                                                required></textarea>
+                                            <textarea class="contact-textarea" name="included" id="included"
+                                                placeholder="Included" cols="3" rows="3" required></textarea>
                                         </div>
                                     </div>
 
@@ -95,8 +101,8 @@
                                         <div class="contact-form mb-24">
                                             <label class="contact-label" for="excluded">Excluded <span
                                                     class="text-danger">*</span></label>
-                                            <textarea class="contact-textarea" name="excluded" id="excluded" placeholder="Excluded" cols="3" rows="3"
-                                                required></textarea>
+                                            <textarea class="contact-textarea" name="excluded" id="excluded"
+                                                placeholder="Excluded" cols="3" rows="3" required></textarea>
                                         </div>
                                     </div>
 
@@ -104,9 +110,8 @@
                                         <div class="contact-form mb-24">
                                             <label class="contact-label" for="image_primary">Image (Primary) <span
                                                     class="text-danger">*</span></label>
-                                            <input class="contact-input" type="file" accept="image/*"
-                                                name="image_primary" id="image_primary" placeholder="Image (Primary)"
-                                                required>
+                                            <input class="contact-input" type="file" accept="image/*" name="image_primary"
+                                                id="image_primary" placeholder="Image (Primary)" required>
                                         </div>
                                     </div>
 
@@ -137,6 +142,116 @@
                                             <input class="contact-input" type="file" accept="image/*"
                                                 name="image_secondary_3" id="image_secondary_3"
                                                 placeholder="Image (Secondary 3)" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-12 col-lg-12">
+                                        <div class="contact-form mb-24">
+                                            <label class="contact-label" for="image_secondary_4">Image (Secondary
+                                                4)</label>
+                                            <input class="contact-input" type="file" accept="image/*"
+                                                name="image_secondary_4" id="image_secondary_4"
+                                                placeholder="Image (Secondary 4)">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-12 col-lg-12">
+                                        <div class="contact-form mb-24">
+                                            <label class="contact-label" for="image_secondary_5">Image (Secondary
+                                                5)</label>
+                                            <input class="contact-input" type="file" accept="image/*"
+                                                name="image_secondary_5" id="image_secondary_5"
+                                                placeholder="Image (Secondary 5)">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-12 col-lg-12">
+                                        <div class="contact-form mb-24">
+                                            <label class="contact-label" for="image_secondary_6">Image (Secondary
+                                                6)</label>
+                                            <input class="contact-input" type="file" accept="image/*"
+                                                name="image_secondary_6" id="image_secondary_6"
+                                                placeholder="Image (Secondary 6)">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-12 col-lg-12">
+                                        <div class="contact-form mb-24">
+                                            <label class="contact-label" for="image_secondary_7">Image (Secondary
+                                                7)</label>
+                                            <input class="contact-input" type="file" accept="image/*"
+                                                name="image_secondary_7" id="image_secondary_7"
+                                                placeholder="Image (Secondary 7)">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-12 col-lg-12">
+                                        <div class="contact-form mb-24">
+                                            <label class="contact-label" for="image_secondary_8">Image (Secondary
+                                                8)</label>
+                                            <input class="contact-input" type="file" accept="image/*"
+                                                name="image_secondary_8" id="image_secondary_8"
+                                                placeholder="Image (Secondary 8)">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-12 col-lg-12">
+                                        <div class="contact-form mb-24">
+                                            <label class="contact-label" for="image_secondary_9">Image (Secondary
+                                                9)</label>
+                                            <input class="contact-input" type="file" accept="image/*"
+                                                name="image_secondary_9" id="image_secondary_9"
+                                                placeholder="Image (Secondary 9)">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-12 col-lg-12">
+                                        <div class="contact-form mb-24">
+                                            <label class="contact-label" for="image_secondary_10">Image (Secondary
+                                                10)</label>
+                                            <input class="contact-input" type="file" accept="image/*"
+                                                name="image_secondary_10" id="image_secondary_10"
+                                                placeholder="Image (Secondary 10)">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-12 col-lg-12">
+                                        <div class="contact-form mb-24">
+                                            <label class="contact-label" for="image_secondary_11">Image (Secondary
+                                                11)</label>
+                                            <input class="contact-input" type="file" accept="image/*"
+                                                name="image_secondary_11" id="image_secondary_11"
+                                                placeholder="Image (Secondary 11)">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-12 col-lg-12">
+                                        <div class="contact-form mb-24">
+                                            <label class="contact-label" for="image_secondary_12">Image (Secondary
+                                                12)</label>
+                                            <input class="contact-input" type="file" accept="image/*"
+                                                name="image_secondary_12" id="image_secondary_12"
+                                                placeholder="Image (Secondary 12)">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-12 col-lg-12">
+                                        <div class="contact-form mb-24">
+                                            <label class="contact-label" for="image_secondary_13">Image (Secondary
+                                                13)</label>
+                                            <input class="contact-input" type="file" accept="image/*"
+                                                name="image_secondary_13" id="image_secondary_13"
+                                                placeholder="Image (Secondary 13)">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-12 col-lg-12">
+                                        <div class="contact-form mb-24">
+                                            <label class="contact-label" for="image_secondary_14">Image (Secondary
+                                                14)</label>
+                                            <input class="contact-input" type="file" accept="image/*"
+                                                name="image_secondary_14" id="image_secondary_14"
+                                                placeholder="Image (Secondary 14)">
                                         </div>
                                     </div>
 

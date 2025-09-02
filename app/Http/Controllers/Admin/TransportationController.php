@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Transportation;
+use App\Models\Location;
 use Illuminate\Http\Request;
+use App\Models\Transportation;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class TransportationController extends Controller
@@ -24,7 +25,9 @@ class TransportationController extends Controller
      */
     public function create()
     {
-        return view('admin.transportations.create');
+        return view('admin.transportations.create', [
+            'locations' => Location::orderBy('name', 'asc')->get()
+        ]);
     }
 
     /**
@@ -34,7 +37,7 @@ class TransportationController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string'],
-            'location' => ['required', 'string'],
+            'location_id' => ['required'],
             'duration' => ['required', 'string'],
             'number_of_individuals' => ['required', 'string'],
             'price' => ['required', 'integer'],
@@ -49,7 +52,7 @@ class TransportationController extends Controller
 
         $transportation = Transportation::create([
             'title' => $request->title,
-            'location' => $request->location,
+            'location_id' => $request->location_id,
             'duration' => $request->duration,
             'number_of_individuals' => $request->number_of_individuals,
             'price' => $request->price,
@@ -115,7 +118,8 @@ class TransportationController extends Controller
     public function edit(Transportation $transportation)
     {
         return view('admin.transportations.edit', [
-            'transportation' => $transportation
+            'transportation' => $transportation,
+            'locations' => Location::orderBy('name', 'asc')->get()
         ]);
     }
 
@@ -126,7 +130,7 @@ class TransportationController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string'],
-            'location' => ['required', 'string'],
+            'location_id' => ['required'],
             'duration' => ['required', 'string'],
             'number_of_individuals' => ['required', 'string'],
             'price' => ['required', 'integer'],
@@ -141,7 +145,7 @@ class TransportationController extends Controller
 
         $transportation->update([
             'title' => $request->title,
-            'location' => $request->location,
+            'location_id' => $request->location_id,
             'duration' => $request->duration,
             'number_of_individuals' => $request->number_of_individuals,
             'price' => $request->price,

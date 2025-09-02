@@ -10,7 +10,8 @@
                 <div class="breadcrumb-text">
                     <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.1s">
                         <ul class="breadcrumb listing">
-                            <li class="breadcrumb-item single-list"><a href="{{ route('home') }}" class="single">Home</a></li>
+                            <li class="breadcrumb-item single-list"><a href="{{ route('home') }}" class="single">Home</a>
+                            </li>
                             <li class="breadcrumb-item single-list" aria-current="page">
                                 <a href="javascript:void(0)" class="single active">Tour Details</a>
                             </li>
@@ -42,6 +43,66 @@
                             <div class="swiper-slide">
                                 <img src="{{ asset('storage/tour/' . $tour->image_secondary_3) }}" alt="image_secondary_3">
                             </div>
+                            @if ($tour->image_secondary_4)
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/tour/' . $tour->image_secondary_4) }}" alt="image_secondary_4">
+                                </div>
+                            @endif
+                            @if ($tour->image_secondary_5)
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/tour/' . $tour->image_secondary_5) }}" alt="image_secondary_5">
+                                </div>
+                            @endif
+                            @if ($tour->image_secondary_6)
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/tour/' . $tour->image_secondary_6) }}" alt="image_secondary_6">
+                                </div>
+                            @endif
+                            @if ($tour->image_secondary_7)
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/tour/' . $tour->image_secondary_7) }}" alt="image_secondary_7">
+                                </div>
+                            @endif
+                            @if ($tour->image_secondary_8)
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/tour/' . $tour->image_secondary_8) }}" alt="image_secondary_8">
+                                </div>
+                            @endif
+                            @if ($tour->image_secondary_9)
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/tour/' . $tour->image_secondary_9) }}" alt="image_secondary_9">
+                                </div>
+                            @endif
+                            @if ($tour->image_secondary_10)
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/tour/' . $tour->image_secondary_10) }}"
+                                        alt="image_secondary_10">
+                                </div>
+                            @endif
+                            @if ($tour->image_secondary_11)
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/tour/' . $tour->image_secondary_11) }}"
+                                        alt="image_secondary_11">
+                                </div>
+                            @endif
+                            @if ($tour->image_secondary_12)
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/tour/' . $tour->image_secondary_12) }}"
+                                        alt="image_secondary_12">
+                                </div>
+                            @endif
+                            @if ($tour->image_secondary_13)
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/tour/' . $tour->image_secondary_13) }}"
+                                        alt="image_secondary_13">
+                                </div>
+                            @endif
+                            @if ($tour->image_secondary_14)
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/tour/' . $tour->image_secondary_14) }}"
+                                        alt="image_secondary_14">
+                                </div>
+                            @endif
                         </div>
                         <div class="swiper-button-next"><i class="ri-arrow-right-s-line"></i></div>
                         <div class="swiper-button-prev"><i class="ri-arrow-left-s-line"></i></div>
@@ -59,7 +120,7 @@
                                 <div class="d-flex flex-wrap align-items-center gap-30 mt-16">
                                     <div class="location">
                                         <i class="ri-map-pin-line"></i>
-                                        <div class="name">{{ $tour->location }}</div>
+                                        <div class="name">{{ $tour->location->name }}</div>
                                     </div>
                                     <div class="divider"></div>
                                     <div class="d-flex align-items-center flex-wrap gap-20">
@@ -120,11 +181,12 @@
                                     <!-- / Tour Include Exclude -->
 
                                     @if (
-                                        $tour->tour_plan_day_1 ||
+                                            $tour->tour_plan_day_1 ||
                                             $tour->tour_plan_day_2 ||
                                             $tour->tour_plan_day_3 ||
                                             $tour->tour_plan_day_4 ||
-                                            $tour->tour_plan_day_5)
+                                            $tour->tour_plan_day_5
+                                        )
                                         <!-- Tour Plan accordion-->
                                         <div class="tour-details-content mb-30">
                                             <h4 class="title">Tour Plan</h4>
@@ -136,8 +198,7 @@
                                                                 <button class="accordion-button" type="button"
                                                                     data-bs-toggle="collapse"
                                                                     data-bs-target="#panelsStayOpen-collapseOne"
-                                                                    aria-expanded="true"
-                                                                    aria-controls="panelsStayOpen-collapseOne">
+                                                                    aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                                                                     Day 1 - {{ $tour->title }}
                                                                 </button>
                                                             </h2>
@@ -157,8 +218,7 @@
                                                                 <button class="accordion-button" type="button"
                                                                     data-bs-toggle="collapse"
                                                                     data-bs-target="#panelsStayOpen-collapseTwo"
-                                                                    aria-expanded="true"
-                                                                    aria-controls="panelsStayOpen-collapseTwo">
+                                                                    aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
                                                                     Day 2 - {{ $tour->title }}
                                                                 </button>
                                                             </h2>
@@ -258,7 +318,9 @@
                                 </div>
 
                                 <!-- Right content -->
-                                <div class="col-xl-4 col-lg-5">
+                                <form action="{{ route('booking.store') }}" method="POST" class="col-xl-4 col-lg-5">
+                                    @csrf
+                                    <input type="hidden" name="tour_id" value="{{ $tour->id }}">
                                     <div class="date-travel-card position-sticky top-0">
                                         <div class="price-review">
                                             <div class="d-flex gap-10 align-items-end">
@@ -272,7 +334,11 @@
                                         <h4 class="heading-card">Select Date and Travelers</h4>
                                         <div class="date-time-dropdown">
                                             <i class="ri-time-line"></i>
-                                            <p class="date-time-result">Wednesday, Jan 17, 2025</p>
+                                            <p class="date-time-result">{{ now()->format('l, M j, Y') }}</p>
+                                            <input type="hidden" name="date_from" id="date_from"
+                                                value="{{ now()->format('Y-m-d') }}">
+                                            <input type="hidden" name="date_to" id="date_to"
+                                                value="{{ now()->format('Y-m-d') }}">
                                         </div>
                                         <div class="dropdown-section position-relative user-picker-dropdown">
                                             <div class="d-flex gap-12 align-items-center">
@@ -295,7 +361,7 @@
                                                         <button class="qty-btn-minus mr-1" type="button">
                                                             <i class="ri-subtract-fill"></i>
                                                         </button>
-                                                        <input type="text" name="qty" value="0"
+                                                        <input type="text" name="number_of_guests[adults]" value="0"
                                                             class="input-qty input-rounded">
                                                         <button class="qty-btn-plus ml-1" type="button">
                                                             <i class="ri-add-fill"></i>
@@ -311,7 +377,7 @@
                                                         <button class="qty-btn-minus mr-1" type="button">
                                                             <i class="ri-subtract-fill"></i>
                                                         </button>
-                                                        <input type="text" name="qty" value="0"
+                                                        <input type="text" name="number_of_guests[children]" value="0"
                                                             class="input-qty input-rounded">
                                                         <button class="qty-btn-plus ml-1" type="button">
                                                             <i class="ri-add-fill"></i>
@@ -327,7 +393,7 @@
                                                         <button class="qty-btn-minus mr-1" type="button">
                                                             <i class="ri-subtract-fill"></i>
                                                         </button>
-                                                        <input type="text" name="qty" value="0"
+                                                        <input type="text" name="number_of_guests[infants]" value="0"
                                                             class="input-qty input-rounded">
                                                         <button class="qty-btn-plus ml-1" type="button">
                                                             <i class="ri-add-fill"></i>
@@ -339,15 +405,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="mt-30">
-                                            <button type="submit" class="send-btn w-100">Check Availability</button>
+                                        <div class="mt-25">
+                                            <button type="submit" class="btn-primary-outline btn-xl w-100">Book Now</button>
                                         </div>
                                         <div class="footer bg-transparent">
                                             <h4 class="title">Free Cancellation</h4>
                                             <p class="pera">Up to 24 hours in advance</p>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -29,15 +29,19 @@
                             <i class="ri-home-8-line"></i> Dashboard </a>
                     </li>
                     <li class="list">
-                        <a href="{{ route('dashboard') }}" class="single">
+                        <a href="{{ route('tour_booking') }}" class="single">
                             <i class="ri-bookmark-3-line"></i> Tour Booking</a>
                     </li>
                     <li class="list">
-                        <a href="{{ route('dashboard') }}" class="single">
+                        <a href="{{ route('resort_booking') }}" class="single">
                             <i class="ri-hotel-bed-line"></i> Resort Booking</a>
                     </li>
                     <li class="list">
-                        <a href="{{ route('dashboard') }}" class="single">
+                        <a href="{{ route('cruise_booking') }}" class="single">
+                            <i class="ri-ship-2-line"></i> Cruise Booking</a>
+                    </li>
+                    <li class="list">
+                        <a href="{{ route('transportation_booking') }}" class="single">
                             <i class="ri-taxi-line"></i> Transport Booking</a>
                     </li>
                     {{-- <li class="list">

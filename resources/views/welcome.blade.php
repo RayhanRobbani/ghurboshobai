@@ -73,16 +73,16 @@
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <button class="plan-link" id="book-resort" data-bs-toggle="tab"
-                                            data-bs-target="#resort-tap" type="button" role="tab"
-                                            aria-controls="resort-tap" aria-selected="false">
+                                            data-bs-target="#resort-tap" type="button" role="tab" aria-controls="resort-tap"
+                                            aria-selected="false">
                                             <i class="ri-hotel-bed-line"></i>Resort
                                         </button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="plan-link" id="book-transport" data-bs-toggle="tab"
-                                            data-bs-target="#transport-tap" type="button" role="tab"
-                                            aria-controls="transport-tap" aria-selected="false">
-                                            <i class="ri-car-line"></i>Transport
+                                        <button class="plan-link" id="book-cruise" data-bs-toggle="tab"
+                                            data-bs-target="#cruise-tap" type="button" role="tab" aria-controls="cruise-tap"
+                                            aria-selected="false">
+                                            <i class="ri-car-line"></i>Cruise
                                         </button>
                                     </li>
                                 </ul>
@@ -90,234 +90,113 @@
 
                                 <!-- Tab Search Contents -->
                                 <div class="tab-content" id="tourTab">
-                                    <div class="tab-pane fade show active" id="tour" role="tabpanel"
-                                        aria-labelledby="tour-tab">
-                                        <div class="d-flex gap-16 flex-wrap mb-26">
-                                            <label class="one-way-label">
-                                                <input class="one-way-input" type="radio" name="radio">
-                                                <span class="circle"></span>
-                                                <span class="radio-text">One Way</span>
-                                            </label>
-                                            <label class="round-trip-label">
-                                                <input class="round-trip-input" type="radio" name="radio" checked>
-                                                <span class="circle"></span>
-                                                <span class="radio-text">Round Trip</span>
-                                            </label>
-                                        </div>
-                                        <div class="row g-4 justify-content-end">
+                                    <form action="{{ route('tour.index') }}" method="POST" class="tab-pane fade show active"
+                                        id="tour" role="tabpanel" aria-labelledby="tour-tab">
+                                        @method('GET')
+                                        @csrf
+                                        <div class="row g-4 justify-content-center">
                                             <div class="col-xl-5 col-lg-12">
                                                 <div class="destination-flex">
-                                                    <div class="select-dropdown-section">
-                                                        <div class="d-flex gap-10 align-items-center">
-                                                            <div class="destination-dropdown-two"></div>
+                                                    <div class="col-xl-12 col-lg-12">
+                                                        <div class="contact-form mb-24">
+                                                            <label class="contact-label" for="location_id">Location <span
+                                                                    class="text-danger">*</span></label>
+                                                            <!-- Select2 -->
+                                                            <select class="select2 select2-hidden-accessible" tabindex="-1"
+                                                                aria-hidden="true" name="location_id" id="location_id"
+                                                                required>
+                                                                <option value=""></option>
+                                                                @foreach ($locations as $location)
+                                                                    <option value="{{ $location->id }}">{{ $location->name }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
-                                                        <div class="destination-result line-clamp-1">
-                                                            Istanbul Airport...
-                                                        </div>
-                                                    </div>
-                                                    <div class="select-dropdown-section">
-                                                        <div class="d-flex gap-10 align-items-center">
-                                                            <div class="destination-dropdown-three"></div>
-                                                        </div>
-                                                        <div class="destination-result-three line-clamp-1">
-                                                            Istanbul Airport...
-                                                        </div>
-                                                    </div>
-                                                    <div class="swap-icon">
-                                                        <i class="ri-arrow-left-right-line"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-5 col-lg-12">
-                                                <div class="destination-flex">
-                                                    <div class="dropdown-section">
-                                                        <div class="d-flex gap-10 align-items-center">
-                                                            <div class="custom-date-three">
-                                                                <h4 class="month-title month-result">February</h4>
-                                                                <div class="year-title year-result">
-                                                                    Tuesday, 6, 2025
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown-section">
-                                                        <div class="d-flex gap-10 align-items-center">
-                                                            <div class="custom-date-three">
-                                                                <h4 class="month-title text-right month-result-two">
-                                                                    March
-                                                                </h4>
-                                                                <div class="year-title text-right year-result-two">
-                                                                    Tuesday, 6, 2025
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="swap-icon">
-                                                        <i class="ri-calendar-2-line"></i>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-xl-2 col-lg-3">
                                                 <div class="sign-btn text-right">
-                                                    <a href="tour-list.html" class="btn-secondary-lg w-100 text-center">
-                                                        <i class="ri-search-line mr-10 font-20"></i> Search Plan
-                                                    </a>
+                                                    <button href="tour-list.html"
+                                                        class="btn-secondary-lg w-100 text-center">
+                                                        <i class="ri-search-line mr-10 font-20"></i> Search
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="resort-tap" role="tabpanel"
-                                        aria-labelledby="book-resort">
-                                        <div class="d-flex gap-16 flex-wrap mb-26">
-                                            <label class="one-way-label">
-                                                <input class="one-way-input" type="radio" name="radio">
-                                                <span class="circle"></span>
-                                                <span class="radio-text">One Way</span>
-                                            </label>
-                                            <label class="round-trip-label">
-                                                <input class="round-trip-input" type="radio" name="radio">
-                                                <span class="circle"></span>
-                                                <span class="radio-text">Round Trip</span>
-                                            </label>
-                                        </div>
-                                        <div class="row g-4 justify-content-end">
+                                    </form>
+
+                                    <form action="{{ route('resort.index') }}" method="POST" class="tab-pane fade"
+                                        id="resort-tap" role="tabpanel" aria-labelledby="book-resort">
+                                        @method('GET')
+                                        @csrf
+                                        <div class="row g-4 justify-content-center">
                                             <div class="col-xl-5 col-lg-12">
                                                 <div class="destination-flex">
-                                                    <div class="select-dropdown-section">
-                                                        <div class="d-flex gap-10 align-items-center">
-                                                            <div class="destination-dropdown-two"></div>
+                                                    <div class="col-xl-12 col-lg-12">
+                                                        <div class="contact-form mb-24">
+                                                            <label class="contact-label" for="location_id">Location <span
+                                                                    class="text-danger">*</span></label>
+                                                            <!-- Select2 -->
+                                                            <select class="select2 select2-hidden-accessible" tabindex="-1"
+                                                                aria-hidden="true" name="location_id" id="location_id"
+                                                                required>
+                                                                <option value=""></option>
+                                                                @foreach ($locations as $location)
+                                                                    <option value="{{ $location->id }}">{{ $location->name }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
-                                                        <div class="destination-result line-clamp-1">
-                                                            Istanbul Airport...
-                                                        </div>
-                                                    </div>
-                                                    <div class="select-dropdown-section">
-                                                        <div class="d-flex gap-10 align-items-center">
-                                                            <div class="destination-dropdown-three"></div>
-                                                        </div>
-                                                        <div class="destination-result-three line-clamp-1">
-                                                            Istanbul Airport...
-                                                        </div>
-                                                    </div>
-                                                    <div class="swap-icon">
-                                                        <i class="ri-arrow-left-right-line"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-5 col-lg-12">
-                                                <div class="destination-flex">
-                                                    <div class="dropdown-section">
-                                                        <div class="d-flex gap-10 align-items-center">
-                                                            <div class="custom-date-three">
-                                                                <h4 class="month-title month-result">February</h4>
-                                                                <div class="year-title year-result">
-                                                                    Tuesday, 6, 2025
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown-section">
-                                                        <div class="d-flex gap-10 align-items-center">
-                                                            <div class="custom-date-three">
-                                                                <h4 class="month-title text-right month-result-two">
-                                                                    March
-                                                                </h4>
-                                                                <div class="year-title text-right year-result-two">
-                                                                    Tuesday, 6, 2025
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="swap-icon">
-                                                        <i class="ri-calendar-2-line"></i>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-xl-2 col-lg-3">
-                                                <div class="sign-btn">
-                                                    <a href="tour-list.html" class="btn-secondary-lg w-100 text-center">
-                                                        <i class="ri-search-line mr-10 font-20"></i> Search Plan
-                                                    </a>
+                                                <div class="sign-btn text-right">
+                                                    <button href="tour-list.html"
+                                                        class="btn-secondary-lg w-100 text-center">
+                                                        <i class="ri-search-line mr-10 font-20"></i> Search
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="transport-tap" role="tabpanel"
-                                        aria-labelledby="book-transport">
-                                        <div class="d-flex gap-16 flex-wrap mb-26">
-                                            <label class="one-way-label">
-                                                <input class="one-way-input" type="radio" name="radio">
-                                                <span class="circle"></span>
-                                                <span class="radio-text">One Way</span>
-                                            </label>
-                                            <label class="round-trip-label">
-                                                <input class="round-trip-input" type="radio" name="radio">
-                                                <span class="circle"></span>
-                                                <span class="radio-text">Round Trip</span>
-                                            </label>
-                                        </div>
-                                        <div class="row g-4 justify-content-end">
+                                    </form>
+
+                                    <form action="{{ route('cruise.index') }}" method="POST" class="tab-pane fade"
+                                        id="cruise-tap" role="tabpanel" aria-labelledby="book-cruise">
+                                        @method('GET')
+                                        @csrf
+                                        <div class="row g-4 justify-content-center">
                                             <div class="col-xl-5 col-lg-12">
                                                 <div class="destination-flex">
-                                                    <div class="select-dropdown-section">
-                                                        <div class="d-flex gap-10 align-items-center">
-                                                            <div class="destination-dropdown-two"></div>
+                                                    <div class="col-xl-12 col-lg-12">
+                                                        <div class="contact-form mb-24">
+                                                            <label class="contact-label" for="location_id">Location <span
+                                                                    class="text-danger">*</span></label>
+                                                            <!-- Select2 -->
+                                                            <select class="select2 select2-hidden-accessible" tabindex="-1"
+                                                                aria-hidden="true" name="location_id" id="location_id"
+                                                                required>
+                                                                <option value=""></option>
+                                                                @foreach ($locations as $location)
+                                                                    <option value="{{ $location->id }}">{{ $location->name }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
-                                                        <div class="destination-result line-clamp-1">
-                                                            Istanbul Airport...
-                                                        </div>
-                                                    </div>
-                                                    <div class="select-dropdown-section">
-                                                        <div class="d-flex gap-10 align-items-center">
-                                                            <div class="destination-dropdown-three"></div>
-                                                        </div>
-                                                        <div class="destination-result-three line-clamp-1">
-                                                            Istanbul Airport...
-                                                        </div>
-                                                    </div>
-                                                    <div class="swap-icon">
-                                                        <i class="ri-arrow-left-right-line"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-5 col-lg-12">
-                                                <div class="destination-flex">
-                                                    <div class="dropdown-section">
-                                                        <div class="d-flex gap-10 align-items-center">
-                                                            <div class="custom-date-three">
-                                                                <h4 class="month-title month-result">February</h4>
-                                                                <div class="year-title year-result">
-                                                                    Tuesday, 6, 2025
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown-section">
-                                                        <div class="d-flex gap-10 align-items-center">
-                                                            <div class="custom-date-three">
-                                                                <h4 class="month-title text-right month-result-two">
-                                                                    March
-                                                                </h4>
-                                                                <div class="year-title text-right year-result-two">
-                                                                    Tuesday, 6, 2025
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="swap-icon">
-                                                        <i class="ri-calendar-2-line"></i>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-xl-2 col-lg-3">
-                                                <div class="sign-btn">
-                                                    <a href="tour-list.html" class="btn-secondary-lg w-100 text-center">
-                                                        <i class="ri-search-line mr-10 font-20"></i> Search Plan
-                                                    </a>
+                                                <div class="sign-btn text-right">
+                                                    <button href="tour-list.html"
+                                                        class="btn-secondary-lg w-100 text-center">
+                                                        <i class="ri-search-line mr-10 font-20"></i> Search
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                                 <!-- / End-of Search Contents -->
                             </div>
@@ -1059,8 +938,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="pills-dubai" role="tabpanel"
-                                aria-labelledby="pills-dubai-tab">
+                            <div class="tab-pane fade" id="pills-dubai" role="tabpanel" aria-labelledby="pills-dubai-tab">
                                 <div class="row g-4">
                                     <div class="col-xl-3 col-lg-4 col-sm-6">
                                         <div class="package-card h-calc">
@@ -1317,8 +1195,8 @@
                         <ul class="nav nav-pills trip-pills" id="pills-tab" role="tablist">
                             <li class="nav-item trip-item" role="presentation">
                                 <button class="nav-link trip-nav active" id="pills-domestic-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-domestic" type="button" role="tab"
-                                    aria-controls="pills-domestic" aria-selected="true">
+                                    data-bs-target="#pills-domestic" type="button" role="tab" aria-controls="pills-domestic"
+                                    aria-selected="true">
                                     Domestic
                                 </button>
                             </li>
@@ -2234,8 +2112,8 @@
                                 </div>
                             </div>
                             <div class="explore-btn" id="pills-explore-three-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-explore-three" role="tab"
-                                aria-controls="pills-explore-three" aria-selected="true">
+                                data-bs-target="#pills-explore-three" role="tab" aria-controls="pills-explore-three"
+                                aria-selected="true">
                                 <div class="d-flex gap-16 align-items-center">
                                     <div class="explore-icon">
                                         <img src="assets/images/icon/explore-3.svg" alt="travello">
@@ -2274,8 +2152,8 @@
                                 </div>
                             </div>
                             <div class="explore-btn" id="pills-explore-seven-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-explore-seven" role="tab"
-                                aria-controls="pills-explore-seven" aria-selected="true">
+                                data-bs-target="#pills-explore-seven" role="tab" aria-controls="pills-explore-seven"
+                                aria-selected="true">
                                 <div class="d-flex gap-16 align-items-center">
                                     <div class="explore-icon">
                                         <img src="assets/images/icon/explore-2.svg" alt="travello">
@@ -2284,8 +2162,8 @@
                                 </div>
                             </div>
                             <div class="explore-btn" id="pills-explore-eight-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-explore-eight" role="tab"
-                                aria-controls="pills-explore-eight" aria-selected="true">
+                                data-bs-target="#pills-explore-eight" role="tab" aria-controls="pills-explore-eight"
+                                aria-selected="true">
                                 <div class="d-flex gap-16 align-items-center">
                                     <div class="explore-icon">
                                         <img src="assets/images/icon/explore-1.svg" alt="travello">
@@ -2713,8 +2591,7 @@
                     <div class="col-xl-4 col-lg-4 col-sm-6">
                         <article class="news-card-two">
                             <figure class="news-banner-two imgEffect">
-                                <a href="news-details.html"><img src="assets/images/news/news-4.png"
-                                        alt="travello"></a>
+                                <a href="news-details.html"><img src="assets/images/news/news-4.png" alt="travello"></a>
                             </figure>
                             <div class="news-content">
                                 <div class="heading">
@@ -2750,8 +2627,7 @@
                     <div class="col-xl-4 col-lg-4 col-sm-6">
                         <article class="news-card-two">
                             <figure class="news-banner-two imgEffect">
-                                <a href="news-details.html"><img src="assets/images/news/news-5.png"
-                                        alt="travello"></a>
+                                <a href="news-details.html"><img src="assets/images/news/news-5.png" alt="travello"></a>
                             </figure>
                             <div class="news-content">
                                 <div class="heading">
@@ -2787,8 +2663,7 @@
                     <div class="col-xl-4 col-lg-4 col-sm-6">
                         <article class="news-card-two">
                             <figure class="news-banner-two imgEffect">
-                                <a href="news-details.html"><img src="assets/images/news/news-6.png"
-                                        alt="travello"></a>
+                                <a href="news-details.html"><img src="assets/images/news/news-6.png" alt="travello"></a>
                             </figure>
                             <div class="news-content">
                                 <div class="heading">

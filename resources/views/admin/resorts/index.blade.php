@@ -53,13 +53,13 @@
                                                             <a href="#"
                                                                 class="line-clamp-1 text-primary text-capitalize">{{ $resort->title }}</a>
                                                         </td>
-                                                        <td>{{ $resort->location }}</td>
+                                                        <td>{{ $resort->location->name }}</td>
                                                         <td>{{ $resort->duration }}</td>
                                                         <td>{{ $resort->number_of_individuals }}</td>
                                                         <td>৳{{ $resort->price }}</td>
                                                         <td>
                                                             <div class="d-flex gap-6">
-                                                                <a href="details-with-slider.html"
+                                                                <a href="{{ route('resort.show', $resort) }}"
                                                                     class="text-16 text-paragraph"><i
                                                                         class="ri-eye-line"></i></a>
                                                                 <a href="{{ route('admin.resort.edit', $resort) }}"

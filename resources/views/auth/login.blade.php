@@ -31,7 +31,7 @@
                             <!-- Logo -->
                             <div class="logo mb-40">
                                 <a href="{{ route('home') }}" class="mb-30 d-block">
-                                    <img src="assets/images/logo/logo.png" alt="logo" class="changeLogo">
+                                    <img src="assets/images/logo/logo.png" alt="logo" class="changeLogo" width="300px">
                                 </a>
                             </div>
                             <!-- Form -->

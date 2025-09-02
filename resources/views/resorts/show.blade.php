@@ -10,7 +10,8 @@
                 <div class="breadcrumb-text">
                     <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.1s">
                         <ul class="breadcrumb listing">
-                            <li class="breadcrumb-item single-list"><a href="{{ route('home') }}" class="single">Home</a></li>
+                            <li class="breadcrumb-item single-list"><a href="{{ route('home') }}" class="single">Home</a>
+                            </li>
                             <li class="breadcrumb-item single-list" aria-current="page">
                                 <a href="javascript:void(0)" class="single active">Resort Details</a>
                             </li>
@@ -36,7 +37,7 @@
                                         <div class="d-flex flex-wrap align-items-center gap-30 mt-16">
                                             <div class="location">
                                                 <i class="ri-map-pin-line"></i>
-                                                <div class="name">{{ $resort->location }}</div>
+                                                <div class="name">{{ $resort->location->name }}</div>
                                             </div>
                                             <div class="divider"></div>
                                             <div class="d-flex align-items-center flex-wrap gap-20">
@@ -99,6 +100,72 @@
                                                         <img src="{{ asset('storage/resort/' . $resort->image_secondary_3) }}"
                                                             alt="image_secondary_3">
                                                     </div>
+                                                    @if ($resort->image_secondary_4)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset('storage/resort/' . $resort->image_secondary_4) }}"
+                                                                alt="image_secondary_4">
+                                                        </div>
+                                                    @endif
+                                                    @if ($resort->image_secondary_5)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset('storage/resort/' . $resort->image_secondary_5) }}"
+                                                                alt="image_secondary_5">
+                                                        </div>
+                                                    @endif
+                                                    @if ($resort->image_secondary_6)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset('storage/resort/' . $resort->image_secondary_6) }}"
+                                                                alt="image_secondary_6">
+                                                        </div>
+                                                    @endif
+                                                    @if ($resort->image_secondary_7)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset('storage/resort/' . $resort->image_secondary_7) }}"
+                                                                alt="image_secondary_7">
+                                                        </div>
+                                                    @endif
+                                                    @if ($resort->image_secondary_8)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset('storage/resort/' . $resort->image_secondary_8) }}"
+                                                                alt="image_secondary_8">
+                                                        </div>
+                                                    @endif
+                                                    @if ($resort->image_secondary_9)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset('storage/resort/' . $resort->image_secondary_9) }}"
+                                                                alt="image_secondary_9">
+                                                        </div>
+                                                    @endif
+                                                    @if ($resort->image_secondary_10)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset('storage/resort/' . $resort->image_secondary_10) }}"
+                                                                alt="image_secondary_10">
+                                                        </div>
+                                                    @endif
+                                                    @if ($resort->image_secondary_11)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset('storage/resort/' . $resort->image_secondary_11) }}"
+                                                                alt="image_secondary_11">
+                                                        </div>
+                                                    @endif
+                                                    @if ($resort->image_secondary_12)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset('storage/resort/' . $resort->image_secondary_12) }}"
+                                                                alt="image_secondary_12">
+                                                        </div>
+                                                    @endif
+                                                    @if ($resort->image_secondary_13)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset('storage/resort/' . $resort->image_secondary_13) }}"
+                                                                alt="image_secondary_13">
+                                                        </div>
+                                                    @endif
+                                                    @if ($resort->image_secondary_14)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset('storage/resort/' . $resort->image_secondary_14) }}"
+                                                                alt="image_secondary_14">
+                                                        </div>
+                                                    @endif
                                                 </div>
                                                 <div class="swiper-button-next"><i class="ri-arrow-right-s-line"></i></div>
                                                 <div class="swiper-button-prev"><i class="ri-arrow-left-s-line"></i></div>
@@ -310,15 +377,15 @@
                                                                 placeholder="Enter your email">
                                                         </div>
                                                         <div class="col-sm-6">
-                                                            <input class="custom-form" type="text"
-                                                                placeholder="Your Phone">
+                                                            <input class="custom-form" type="text" placeholder="Your Phone">
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <input class="custom-form" type="text"
                                                                 placeholder="Select subject">
                                                         </div>
                                                         <div class="col-sm-12">
-                                                            <textarea class="custom-form-textarea" id="exampleFormControlTextarea1" rows="6"
+                                                            <textarea class="custom-form-textarea"
+                                                                id="exampleFormControlTextarea1" rows="6"
                                                                 placeholder="Enter your message..."></textarea>
                                                         </div>
                                                     </div>
@@ -331,7 +398,9 @@
                                         </div>
 
                                         <!-- Right content -->
-                                        <div class="col-xl-4 col-lg-5">
+                                        <form action="{{ route('booking.store') }}" method="POST" class="col-xl-4 col-lg-5">
+                                            @csrf
+                                            <input type="hidden" name="resort_id" value="{{ $resort->id }}">
                                             <div class="date-travel-card position-sticky top-0">
                                                 <div class="price-review">
                                                     <div class="d-flex gap-10 align-items-end">
@@ -345,7 +414,11 @@
                                                 <h4 class="heading-card">Select Date and Travelers</h4>
                                                 <div class="date-time-dropdown">
                                                     <i class="ri-time-line"></i>
-                                                    <p class="date-time-result">Wednesday, Jan 17, 2025</p>
+                                                    <p class="date-time-result">{{ now()->format('l, M j, Y') }}</p>
+                                                    <input type="hidden" name="date_from" id="date_from"
+                                                        value="{{ now()->format('Y-m-d') }}">
+                                                    <input type="hidden" name="date_to" id="date_to"
+                                                        value="{{ now()->format('Y-m-d') }}">
                                                 </div>
                                                 <div class="dropdown-section position-relative user-picker-dropdown">
                                                     <div class="d-flex gap-12 align-items-center">
@@ -368,7 +441,7 @@
                                                                 <button class="qty-btn-minus mr-1" type="button">
                                                                     <i class="ri-subtract-fill"></i>
                                                                 </button>
-                                                                <input type="text" name="qty" value="0"
+                                                                <input type="text" name="number_of_guests[adults]" value="0"
                                                                     class="input-qty input-rounded">
                                                                 <button class="qty-btn-plus ml-1" type="button">
                                                                     <i class="ri-add-fill"></i>
@@ -384,8 +457,8 @@
                                                                 <button class="qty-btn-minus mr-1" type="button">
                                                                     <i class="ri-subtract-fill"></i>
                                                                 </button>
-                                                                <input type="text" name="qty" value="0"
-                                                                    class="input-qty input-rounded">
+                                                                <input type="text" name="number_of_guests[children]"
+                                                                    value="0" class="input-qty input-rounded">
                                                                 <button class="qty-btn-plus ml-1" type="button">
                                                                     <i class="ri-add-fill"></i>
                                                                 </button>
@@ -400,8 +473,8 @@
                                                                 <button class="qty-btn-minus mr-1" type="button">
                                                                     <i class="ri-subtract-fill"></i>
                                                                 </button>
-                                                                <input type="text" name="qty" value="0"
-                                                                    class="input-qty input-rounded">
+                                                                <input type="text" name="number_of_guests[infants]"
+                                                                    value="0" class="input-qty input-rounded">
                                                                 <button class="qty-btn-plus ml-1" type="button">
                                                                     <i class="ri-add-fill"></i>
                                                                 </button>
@@ -412,75 +485,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="my-25">
-                                                    <button type="submit" class="btn-primary-outline btn-xl w-100">Check
-                                                        Availability</button>
-                                                </div>
-
-                                                <!-- Total Pricing -->
-                                                <div class="card mb-10 border-0">
-                                                    <ul class="listing border-bottom pb-6 mb-12">
-                                                        <li
-                                                            class="single-list d-flex justify-content-between align-items-center flex-wrap gap-10 mb-10">
-                                                            <p class="text-16 text-capitalize text-primary-paragraph">Sub
-                                                                Total</p>
-                                                            <p
-                                                                class="text-16 font-600 text-capitalize text-primary-paragraph">
-                                                                $170.15</p>
-                                                        </li>
-                                                        <li
-                                                            class="single-list d-flex justify-content-between align-items-center flex-wrap gap-10 mb-10">
-                                                            <p class="text-16 text-capitalize text-primary-paragraph">Vat
-                                                                Tax</p>
-                                                            <p
-                                                                class="text-16 font-600 text-capitalize text-primary-paragraph">
-                                                                $05.00</p>
-                                                        </li>
-                                                        <li
-                                                            class="single-list d-flex justify-content-between align-items-center flex-wrap gap-10 mb-10">
-                                                            <p class="text-16 text-capitalize text-primary-paragraph">
-                                                                Adults</p>
-                                                            <p
-                                                                class="text-16 font-600 text-capitalize text-primary-paragraph">
-                                                                04</p>
-                                                        </li>
-                                                        <li
-                                                            class="single-list d-flex justify-content-between align-items-center flex-wrap gap-10 mb-10">
-                                                            <p class="text-16 text-capitalize text-primary-paragraph">
-                                                                Children</p>
-                                                            <p
-                                                                class="text-16 font-600 text-capitalize text-primary-paragraph">
-                                                                01</p>
-                                                        </li>
-                                                        <li
-                                                            class="single-list d-flex justify-content-between align-items-center flex-wrap gap-10 mb-10">
-                                                            <p class="text-16 text-capitalize text-primary-paragraph">Fresh
-                                                                Water</p>
-                                                            <p
-                                                                class="text-16 font-600 text-capitalize text-primary-paragraph">
-                                                                $10</p>
-                                                        </li>
-                                                        <li
-                                                            class="single-list d-flex justify-content-between align-items-center flex-wrap gap-10 mb-10">
-                                                            <p class="text-16 text-capitalize text-primary-paragraph">
-                                                                Dinner</p>
-                                                            <p
-                                                                class="text-16 font-600 text-capitalize text-primary-paragraph">
-                                                                $100.15</p>
-                                                        </li>
-                                                    </ul>
-                                                    <!-- / Total Pricing -->
-
-                                                    <!-- Total -->
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center flex-wrap gap-10 mb-30">
-                                                        <p class="text-18 text-capitalize text-primary font-700">Total</p>
-                                                        <p class="text-18 text-capitalize text-primary font-700">$425</p>
-                                                    </div>
-                                                    <div>
-                                                        <button href="" type="submit"
-                                                            class="btn-primary-fill btn-xl w-100">add to card</a>
-                                                    </div>
+                                                <div class="mt-25">
+                                                    <button type="submit" class="btn-primary-outline btn-xl w-100">Book
+                                                        Now</button>
                                                 </div>
 
                                                 <div class="footer bg-transparent">
@@ -488,13 +495,13 @@
                                                     <p class="pera">Up to 24 hours in advance</p>
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
 
             </div>

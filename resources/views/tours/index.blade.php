@@ -398,7 +398,7 @@
                                                 </h4>
                                                 <div class="location">
                                                     <i class="ri-map-pin-line"></i>
-                                                    <div class="name">{{ $tour->location }}</div>
+                                                    <div class="name">{{ $tour->location->name }}</div>
                                                 </div>
                                                 <div class="packages-person">
                                                     <div class="count">

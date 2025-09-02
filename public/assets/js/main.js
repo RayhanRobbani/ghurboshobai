@@ -5,18 +5,18 @@
     @version         : 3.0.0
     @Template Name   : Travello
     @Template author : initTheme
-    
-    :: Swiper Slider Active         :: Nice Scroll js             
-    :: Fancy box                    :: Hover Tilt Effect        
-    :: Search box                   :: Select 2                                  
-    :: Mobile Menu                  :: Slick Nav       
-    :: Animation                    :: Wow Animation      
+
+    :: Swiper Slider Active         :: Nice Scroll js
+    :: Fancy box                    :: Hover Tilt Effect
+    :: Search box                   :: Select 2
+    :: Mobile Menu                  :: Slick Nav
+    :: Animation                    :: Wow Animation
     :: Sticky And Scroll Up         :: JS Year
     :: JS for Price Range slider    :: Play video Slider
     :: Custom click ad remove       :: Custom Dropdown
     :: Filter side nav              :: Password Show Hide
-    :: Payment Gateway selection    
-    
+    :: Payment Gateway selection
+
 ------------------------------------------------------------
     End-of Script
 ------------------------------------------------------------*/
@@ -37,8 +37,8 @@
             $("#back-top").fadeIn(300);
         }
     });
-    
-    
+
+
     /*----------------------------------------------
         :: Swiper Slider Active
     ----------------------------------------------*/
@@ -293,7 +293,7 @@
         $(".qty-btn-plus, .qty-btn-minus").click(function () {
             var $input = $(this).siblings(".input-qty");
             var value = parseInt($input.val(), 10);
-    
+
             if ($(this).hasClass("qty-btn-plus")) {
                 value++;
             } else {
@@ -306,7 +306,7 @@
         $(".qty-btn-plus-two, .qty-btn-minus-two").click(function () {
             var $input = $(this).siblings(".input-qty-two");
             var value = parseInt($input.val(), 10);
-    
+
             if ($(this).hasClass("qty-btn-plus-two")) {
                 value++;
             } else {
@@ -375,7 +375,7 @@
         containerCssClass: "custom-select2-dropdown",
         dropdownCssClass: "custom-select2-dropdown-container",
     });
-    
+
     $(".destination-dropdown-two").select2({
         data: destination,
         placeholder: "Destination",
@@ -417,7 +417,7 @@
         $(".destination-result-three").html(item.description);
         return item.text;
     }
-    
+
     /*----------------------------------------------
         Date picker
     ----------------------------------------------*/
@@ -433,6 +433,8 @@
         var startDate = picker.startDate.format("dddd, MMM D, YYYY");
         var endDate = picker.endDate.format("dddd, MMM D, YYYY");
         $(".date-time-result").text(startDate);
+        $("#date_from").val(picker.startDate.format("YYYY-MM-DD"));
+        $("#date_to").val(picker.endDate.format("YYYY-MM-DD"));
     });
     $(".custom-date-three").on("apply.daterangepicker", function (ev, picker) {
         var StartMonth = picker.startDate.format("MMMM");
@@ -445,7 +447,7 @@
         $(".year-result-two").text(EndYear);
     });
 
-    
+
     /*----------------------------------------------
         Always open Date picker
     ----------------------------------------------*/
@@ -524,7 +526,7 @@
             }
         }
     });
-    
+
     /*-----------------------------------------------
         :: Search box
     -----------------------------------------------*/
@@ -793,7 +795,7 @@
         $('.panel-sidebar-close, .sidebar-users-dashboard, .sidebar-body-overlay').addClass('active');
     });
 
-    
+
 
     /*-----------------------------------
       Product Counter Cart Table
@@ -823,5 +825,5 @@
         }
     });
 
-    
+
 })(jQuery);

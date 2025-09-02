@@ -10,10 +10,16 @@ class ResortController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = Resort::query();
+
+        if ($request->has('location_id')) {
+            $query->where('location_id', $request->location_id);
+        }
+
         return view('resorts.index', [
-            'resorts' => Resort::latest()->get()
+            'resorts' => $query->latest()->get()
         ]);
     }
 

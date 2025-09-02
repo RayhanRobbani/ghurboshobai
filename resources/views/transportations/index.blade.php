@@ -400,7 +400,7 @@
                                                 </h4>
                                                 <div class="location">
                                                     <i class="ri-map-pin-line"></i>
-                                                    <div class="name text-capitalize">{{ $transportation->location }}</div>
+                                                    <div class="name text-capitalize">{{ $transportation->location->name }}</div>
                                                 </div>
                                                 <div class="transports-person">
                                                     {{-- <div class="count">

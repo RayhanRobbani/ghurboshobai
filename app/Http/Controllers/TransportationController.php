@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Location;
 use App\Models\Transportation;
 use Illuminate\Http\Request;
 
@@ -10,10 +11,20 @@ class TransportationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function locations()
+    {
+        return view('transportations.locations', [
+            'locations' => Location::orderBy('name', 'asc')->get()
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Location $location)
     {
         return view('transportations.index', [
-            'transportations' => Transportation::latest()->get()
+            'transportations' => Transportation::where('location_id', $location->id)->latest()->get()
         ]);
     }
 

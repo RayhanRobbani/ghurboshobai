@@ -401,7 +401,7 @@
                                                 </h4>
                                                 <div class="location">
                                                     <i class="ri-map-pin-line"></i>
-                                                    <div class="name text-capitalize">{{ $resort->location }}</div>
+                                                    <div class="name text-capitalize">{{ $resort->location->name }}</div>
                                                 </div>
                                                 <div class="hotel-person">
                                                     {{-- <div class="count">

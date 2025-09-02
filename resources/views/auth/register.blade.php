@@ -30,7 +30,7 @@
                             <!-- Logo -->
                             <div class="logo mb-40">
                                 <a href="{{ route('home') }}" class="mb-30 d-block">
-                                    <img src="assets/images/logo/logo.png" alt="logo" class="changeLogo">
+                                    <img src="assets/images/logo/logo.png" alt="logo" class="changeLogo" width="300px">
                                 </a>
                             </div>
                             <!-- Form -->
@@ -50,6 +50,14 @@
                                     <input class="form-control contact-input" id="email" type="email" name="email"
                                         value="{{ old('email') }}" required autocomplete="username" placeholder="Email">
                                     @error('email')
+                                        <div class="mt-2 text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="contact-form mb-24">
+                                    <label class="contact-label" for="contact">Phone Number</label>
+                                    <input class="form-control contact-input" id="contact" type="tel" name="contact"
+                                        value="{{ old('contact') }}" required autocomplete="contact" placeholder="Phone Number">
+                                    @error('contact')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>

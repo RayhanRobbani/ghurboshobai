@@ -39,10 +39,16 @@
 
                                     <div class="col-xl-12 col-lg-12">
                                         <div class="contact-form mb-24">
-                                            <label class="contact-label" for="location">Location <span
+                                            <label class="contact-label" for="location_id">Location <span
                                                     class="text-danger">*</span></label>
-                                            <input class="contact-input" type="text" name="location" id="location"
-                                                placeholder="Location" required>
+                                            <!-- Select2 -->
+                                            <select class="select2 select2-hidden-accessible" tabindex="-1"
+                                                aria-hidden="true" name="location_id" id="location_id" required>
+                                                <option value=""></option>
+                                                @foreach ($locations as $location)
+                                                    <option value="{{ $location->id }}">{{ $location->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 
@@ -77,8 +83,8 @@
                                         <div class="contact-form mb-24">
                                             <label class="contact-label" for="about">About <span
                                                     class="text-danger">*</span></label>
-                                            <textarea class="contact-textarea" name="about" id="about" placeholder="About" cols="3" rows="3"
-                                                required></textarea>
+                                            <textarea class="contact-textarea" name="about" id="about" placeholder="About"
+                                                cols="3" rows="3" required></textarea>
                                         </div>
                                     </div>
 
@@ -104,9 +110,8 @@
                                         <div class="contact-form mb-24">
                                             <label class="contact-label" for="image_primary">Image (Primary) <span
                                                     class="text-danger">*</span></label>
-                                            <input class="contact-input" type="file" accept="image/*"
-                                                name="image_primary" id="image_primary" placeholder="Image (Primary)"
-                                                required>
+                                            <input class="contact-input" type="file" accept="image/*" name="image_primary"
+                                                id="image_primary" placeholder="Image (Primary)" required>
                                         </div>
                                     </div>
 

@@ -89,7 +89,7 @@
                     <div class="footer-content">
                         <div class="d-flex flex-column gap-20">
                             <div class="logo">
-                                <img src="/assets/images/logo/logo.png" alt="travello" class="changeLogo">
+                                <img src="/assets/images/logo/logo.png" alt="travello" class="changeLogo" height="100px">
                             </div>
                             <p class="pera">
                                 Travel is a transformative and enriching experience that
@@ -129,10 +129,10 @@
                     <div class="col-lg-12">
                         <div class="d-flex justify-content-between gap-14 flex-wrap">
                             <p class="pera">
-                                © <span class="current-year">2025</span> initTheme. All rights
+                                © <span class="current-year">2025</span> All rights
                                 reserved
                             </p>
-                            <p class="pera">Powered by @Travello</p>
+                            <p class="pera">Powered by <a href="https://fourbitbd.com/">FourBit</a></p>
                         </div>
                     </div>
                 </div>

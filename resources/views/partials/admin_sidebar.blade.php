@@ -29,15 +29,19 @@
                             <i class="ri-home-8-line"></i> Admin Dashboard </a>
                     </li>
                     <li class="list">
-                        <a href="{{ route('admin.dashboard') }}" class="single">
+                        <a href="{{ route('admin.tour_booking') }}" class="single">
                             <i class="ri-bookmark-3-line"></i> Tour Booking</a>
                     </li>
                     <li class="list">
-                        <a href="{{ route('admin.dashboard') }}" class="single">
+                        <a href="{{ route('admin.resort_booking') }}" class="single">
                             <i class="ri-hotel-bed-line"></i> Resort Booking</a>
                     </li>
                     <li class="list">
-                        <a href="{{ route('admin.dashboard') }}" class="single">
+                        <a href="{{ route('admin.cruise_booking') }}" class="single">
+                            <i class="ri-ship-2-line"></i> Cruise Booking</a>
+                    </li>
+                    <li class="list">
+                        <a href="{{ route('admin.transportation_booking') }}" class="single">
                             <i class="ri-taxi-line"></i> Transport Booking</a>
                     </li>
                     {{-- <li class="list">
@@ -64,12 +68,20 @@
                         </P>
                     </li>
                     <li class="list">
+                        <a href="{{ route('admin.location.index') }}" class="single">
+                            <i class="ri-map-pin-line"></i> List Locations</a>
+                    </li>
+                    <li class="list">
                         <a href="{{ route('admin.tour.index') }}" class="single">
                             <i class="ri-bookmark-3-line"></i> List Tours</a>
                     </li>
                     <li class="list">
                         <a href="{{ route('admin.resort.index') }}" class="single">
                             <i class="ri-hotel-bed-line"></i> List Resorts</a>
+                    </li>
+                    <li class="list">
+                        <a href="{{ route('admin.cruise.index') }}" class="single">
+                            <i class="ri-ship-2-line"></i> List Cruises</a>
                     </li>
                     <li class="list">
                         <a href="{{ route('admin.transportation.index') }}" class="single">

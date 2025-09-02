@@ -2,9 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Location;
 use Illuminate\Database\Eloquent\Model;
 
 class Transportation extends Model
 {
     protected $guarded = ['id'];
+
+    public function location()
+    {
+        return $this->BelongsTo(Location::class);
+    }
 }

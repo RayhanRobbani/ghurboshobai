@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Resort;
+use App\Models\Location;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class ResortController extends Controller
@@ -24,7 +25,9 @@ class ResortController extends Controller
      */
     public function create()
     {
-        return view('admin.resorts.create');
+        return view('admin.resorts.create', [
+            'locations' => Location::orderBy('name', 'asc')->get()
+        ]);
     }
 
     /**
@@ -34,7 +37,7 @@ class ResortController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string'],
-            'location' => ['required', 'string'],
+            'location_id' => ['required'],
             'duration' => ['required', 'string'],
             'number_of_individuals' => ['required', 'string'],
             'price' => ['required', 'integer'],
@@ -44,12 +47,23 @@ class ResortController extends Controller
             'image_primary' => ['required'],
             'image_secondary_1' => ['required'],
             'image_secondary_2' => ['required'],
-            'image_secondary_3' => ['required']
+            'image_secondary_3' => ['required'],
+            'image_secondary_4' => ['nullable'],
+            'image_secondary_5' => ['nullable'],
+            'image_secondary_6' => ['nullable'],
+            'image_secondary_7' => ['nullable'],
+            'image_secondary_8' => ['nullable'],
+            'image_secondary_9' => ['nullable'],
+            'image_secondary_10' => ['nullable'],
+            'image_secondary_11' => ['nullable'],
+            'image_secondary_12' => ['nullable'],
+            'image_secondary_13' => ['nullable'],
+            'image_secondary_14' => ['nullable']
         ]);
 
         $resort = Resort::create([
             'title' => $request->title,
-            'location' => $request->location,
+            'location_id' => $request->location_id,
             'duration' => $request->duration,
             'number_of_individuals' => $request->number_of_individuals,
             'price' => $request->price,
@@ -94,6 +108,105 @@ class ResortController extends Controller
             ]);
         }
 
+        if ($request->hasFile('image_secondary_4')) {
+            $name = $resort->id . '-image_secondary_4-' . time() . '.' . $request->image_secondary_4->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_4'), $name);
+
+            $resort->update([
+                'image_secondary_4' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_5')) {
+            $name = $resort->id . '-image_secondary_5-' . time() . '.' . $request->image_secondary_5->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_5'), $name);
+
+            $resort->update([
+                'image_secondary_5' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_6')) {
+            $name = $resort->id . '-image_secondary_6-' . time() . '.' . $request->image_secondary_6->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_6'), $name);
+
+            $resort->update([
+                'image_secondary_6' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_7')) {
+            $name = $resort->id . '-image_secondary_7-' . time() . '.' . $request->image_secondary_7->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_7'), $name);
+
+            $resort->update([
+                'image_secondary_7' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_8')) {
+            $name = $resort->id . '-image_secondary_8-' . time() . '.' . $request->image_secondary_8->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_8'), $name);
+
+            $resort->update([
+                'image_secondary_8' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_9')) {
+            $name = $resort->id . '-image_secondary_9-' . time() . '.' . $request->image_secondary_9->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_9'), $name);
+
+            $resort->update([
+                'image_secondary_9' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_10')) {
+            $name = $resort->id . '-image_secondary_10-' . time() . '.' . $request->image_secondary_10->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_10'), $name);
+
+            $resort->update([
+                'image_secondary_10' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_11')) {
+            $name = $resort->id . '-image_secondary_11-' . time() . '.' . $request->image_secondary_11->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_11'), $name);
+
+            $resort->update([
+                'image_secondary_11' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_12')) {
+            $name = $resort->id . '-image_secondary_12-' . time() . '.' . $request->image_secondary_12->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_12'), $name);
+
+            $resort->update([
+                'image_secondary_12' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_13')) {
+            $name = $resort->id . '-image_secondary_13-' . time() . '.' . $request->image_secondary_13->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_13'), $name);
+
+            $resort->update([
+                'image_secondary_13' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_14')) {
+            $name = $resort->id . '-image_secondary_14-' . time() . '.' . $request->image_secondary_14->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_14'), $name);
+
+            $resort->update([
+                'image_secondary_14' => $name
+            ]);
+        }
+
         if ($resort) {
             return redirect()->route('admin.resort.index')->with('success', 'Resort added successfully!');
         }
@@ -115,7 +228,8 @@ class ResortController extends Controller
     public function edit(Resort $resort)
     {
         return view('admin.resorts.edit', [
-            'resort' => $resort
+            'resort' => $resort,
+            'locations' => Location::orderBy('name', 'asc')->get()
         ]);
     }
 
@@ -126,7 +240,7 @@ class ResortController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string'],
-            'location' => ['required', 'string'],
+            'location_id' => ['required'],
             'duration' => ['required', 'string'],
             'number_of_individuals' => ['required', 'string'],
             'price' => ['required', 'integer'],
@@ -136,12 +250,23 @@ class ResortController extends Controller
             'image_primary' => ['nullable'],
             'image_secondary_1' => ['nullable'],
             'image_secondary_2' => ['nullable'],
-            'image_secondary_3' => ['nullable']
+            'image_secondary_3' => ['nullable'],
+            'image_secondary_4' => ['nullable'],
+            'image_secondary_5' => ['nullable'],
+            'image_secondary_6' => ['nullable'],
+            'image_secondary_7' => ['nullable'],
+            'image_secondary_8' => ['nullable'],
+            'image_secondary_9' => ['nullable'],
+            'image_secondary_10' => ['nullable'],
+            'image_secondary_11' => ['nullable'],
+            'image_secondary_12' => ['nullable'],
+            'image_secondary_13' => ['nullable'],
+            'image_secondary_14' => ['nullable']
         ]);
 
         $resort->update([
             'title' => $request->title,
-            'location' => $request->location,
+            'location_id' => $request->location_id,
             'duration' => $request->duration,
             'number_of_individuals' => $request->number_of_individuals,
             'price' => $request->price,
@@ -202,6 +327,149 @@ class ResortController extends Controller
             ]);
         }
 
+        if ($request->hasFile('image_secondary_4')) {
+            if ($resort->image_secondary_4) {
+                Storage::disk('public')->delete('resort/' . $resort->image_secondary_4);
+            }
+
+            $name = $resort->id . '-image_secondary_4-' . time() . '.' . $request->image_secondary_4->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_4'), $name);
+
+            $resort->update([
+                'image_secondary_4' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_5')) {
+            if ($resort->image_secondary_5) {
+                Storage::disk('public')->delete('resort/' . $resort->image_secondary_5);
+            }
+
+            $name = $resort->id . '-image_secondary_5-' . time() . '.' . $request->image_secondary_5->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_5'), $name);
+
+            $resort->update([
+                'image_secondary_5' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_6')) {
+            if ($resort->image_secondary_6) {
+                Storage::disk('public')->delete('resort/' . $resort->image_secondary_6);
+            }
+
+            $name = $resort->id . '-image_secondary_6-' . time() . '.' . $request->image_secondary_6->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_6'), $name);
+
+            $resort->update([
+                'image_secondary_6' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_7')) {
+            if ($resort->image_secondary_7) {
+                Storage::disk('public')->delete('resort/' . $resort->image_secondary_7);
+            }
+
+            $name = $resort->id . '-image_secondary_7-' . time() . '.' . $request->image_secondary_7->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_7'), $name);
+
+            $resort->update([
+                'image_secondary_7' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_8')) {
+            if ($resort->image_secondary_8) {
+                Storage::disk('public')->delete('resort/' . $resort->image_secondary_8);
+            }
+
+            $name = $resort->id . '-image_secondary_8-' . time() . '.' . $request->image_secondary_8->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_8'), $name);
+
+            $resort->update([
+                'image_secondary_8' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_9')) {
+            if ($resort->image_secondary_9) {
+                Storage::disk('public')->delete('resort/' . $resort->image_secondary_9);
+            }
+
+            $name = $resort->id . '-image_secondary_9-' . time() . '.' . $request->image_secondary_9->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_9'), $name);
+
+            $resort->update([
+                'image_secondary_9' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_10')) {
+            if ($resort->image_secondary_10) {
+                Storage::disk('public')->delete('resort/' . $resort->image_secondary_10);
+            }
+
+            $name = $resort->id . '-image_secondary_10-' . time() . '.' . $request->image_secondary_10->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_10'), $name);
+
+            $resort->update([
+                'image_secondary_10' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_11')) {
+            if ($resort->image_secondary_11) {
+                Storage::disk('public')->delete('resort/' . $resort->image_secondary_11);
+            }
+
+            $name = $resort->id . '-image_secondary_11-' . time() . '.' . $request->image_secondary_11->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_11'), $name);
+
+            $resort->update([
+                'image_secondary_11' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_12')) {
+            if ($resort->image_secondary_12) {
+                Storage::disk('public')->delete('resort/' . $resort->image_secondary_12);
+            }
+
+            $name = $resort->id . '-image_secondary_12-' . time() . '.' . $request->image_secondary_12->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_12'), $name);
+
+            $resort->update([
+                'image_secondary_12' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_13')) {
+            if ($resort->image_secondary_13) {
+                Storage::disk('public')->delete('resort/' . $resort->image_secondary_13);
+            }
+
+            $name = $resort->id . '-image_secondary_13-' . time() . '.' . $request->image_secondary_13->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_13'), $name);
+
+            $resort->update([
+                'image_secondary_13' => $name
+            ]);
+        }
+
+        if ($request->hasFile('image_secondary_14')) {
+            if ($resort->image_secondary_14) {
+                Storage::disk('public')->delete('resort/' . $resort->image_secondary_14);
+            }
+
+            $name = $resort->id . '-image_secondary_14-' . time() . '.' . $request->image_secondary_14->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('resort', $request->file('image_secondary_14'), $name);
+
+            $resort->update([
+                'image_secondary_14' => $name
+            ]);
+        }
+
         return redirect()->route('admin.resort.index')->with('success', 'Resort updated successfully!');
     }
 
@@ -224,6 +492,50 @@ class ResortController extends Controller
 
         if ($resort->image_secondary_3) {
             Storage::disk('public')->delete('resort/' . $resort->image_secondary_3);
+        }
+
+        if ($resort->image_secondary_4) {
+            Storage::disk('public')->delete('resort/' . $resort->image_secondary_4);
+        }
+
+        if ($resort->image_secondary_5) {
+            Storage::disk('public')->delete('resort/' . $resort->image_secondary_5);
+        }
+
+        if ($resort->image_secondary_6) {
+            Storage::disk('public')->delete('resort/' . $resort->image_secondary_6);
+        }
+
+        if ($resort->image_secondary_7) {
+            Storage::disk('public')->delete('resort/' . $resort->image_secondary_7);
+        }
+
+        if ($resort->image_secondary_8) {
+            Storage::disk('public')->delete('resort/' . $resort->image_secondary_8);
+        }
+
+        if ($resort->image_secondary_9) {
+            Storage::disk('public')->delete('resort/' . $resort->image_secondary_9);
+        }
+
+        if ($resort->image_secondary_10) {
+            Storage::disk('public')->delete('resort/' . $resort->image_secondary_10);
+        }
+
+        if ($resort->image_secondary_11) {
+            Storage::disk('public')->delete('resort/' . $resort->image_secondary_11);
+        }
+
+        if ($resort->image_secondary_12) {
+            Storage::disk('public')->delete('resort/' . $resort->image_secondary_12);
+        }
+
+        if ($resort->image_secondary_13) {
+            Storage::disk('public')->delete('resort/' . $resort->image_secondary_13);
+        }
+
+        if ($resort->image_secondary_14) {
+            Storage::disk('public')->delete('resort/' . $resort->image_secondary_14);
         }
 
         $resort->delete();

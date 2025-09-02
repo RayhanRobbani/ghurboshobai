@@ -9,39 +9,50 @@
             <div class="row g-4">
                 <div class="col-lg-12">
                     <div class="small-tittle-two pb-0">
-                        <h5 class="title font-600 text-capitalize mb-0">Dashboard</h5>
+                        <h5 class="title font-600 text-capitalize mb-0">Admin Dashboard</h5>
                     </div>
                 </div>
 
-                <div class="col-xl-4 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                     <div class="single-dashboard-card single-dashboard-card2 h-calc">
                         <div class="cat-caption">
-                            <p class="pera font-600">Total Booking</p>
+                            <p class="pera font-600">Tour Booking</p>
                             <div class="single-counter d-flex gap-17">
-                                <p class="currency"> <i class="ri-cup-line"></i></p>
-                                <p class="amount">0</p>
+                                <p class="currency"> <i class="ri-bookmark-3-line"></i></p>
+                                <p class="amount">{{ $tour_count }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                     <div class="single-dashboard-card single-dashboard-card2 h-calc">
                         <div class="cat-caption">
-                            <p class="pera font-600">Tour Plan Booking</p>
+                            <p class="pera font-600">Resort Booking</p>
                             <div class="single-counter d-flex gap-17">
-                                <p class="currency"> <i class="ri-cup-line"></i></p>
-                                <p class="amount">0</p>
+                                <p class="currency"> <i class="ri-hotel-bed-line"></i></p>
+                                <p class="amount">{{ $resort_count }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                     <div class="single-dashboard-card single-dashboard-card2 h-calc">
                         <div class="cat-caption">
-                            <p class="pera font-600">Hotel Booking</p>
+                            <p class="pera font-600">Cruise Booking</p>
                             <div class="single-counter d-flex gap-17">
-                                <p class="currency"> <i class="ri-cup-line"></i></p>
-                                <p class="amount">0</p>
+                                <p class="currency"> <i class="ri-ship-2-line"></i></p>
+                                <p class="amount">{{ $cruise_count }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6">
+                    <div class="single-dashboard-card single-dashboard-card2 h-calc">
+                        <div class="cat-caption">
+                            <p class="pera font-600">Transport Booking</p>
+                            <div class="single-counter d-flex gap-17">
+                                <p class="currency"> <i class="ri-taxi-line"></i></p>
+                                <p class="amount">{{ $transportation_count }}</p>
                             </div>
                         </div>
                     </div>
@@ -129,7 +140,7 @@
         <!-- End-of Recent Transactions Table -->
 
         <!-- Recent Travel Table S t a r t -->
-        <section class="recent-traveling">
+        {{-- <section class="recent-traveling">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="card border-0">
@@ -200,7 +211,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!-- End-of Recent Travel Table -->
 
     </div>

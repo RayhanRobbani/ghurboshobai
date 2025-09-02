@@ -40,10 +40,18 @@
 
                                     <div class="col-xl-12 col-lg-12">
                                         <div class="contact-form mb-24">
-                                            <label class="contact-label" for="location">Location <span
+                                            <label class="contact-label" for="location_id">Location <span
                                                     class="text-danger">*</span></label>
-                                            <input class="contact-input" type="text" name="location" id="location"
-                                                value="{{ $transportation->location }}" required>
+                                            <!-- Select2 -->
+                                            <select class="select2 select2-hidden-accessible" tabindex="-1"
+                                                aria-hidden="true" name="location_id" id="location_id" required>
+                                                <option value=""></option>
+                                                @foreach ($locations as $location)
+                                                    <option value="{{ $location->id }}"
+                                                        @selected($location->id == $transportation->location_id)>{{ $location->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 
@@ -79,7 +87,8 @@
                                         <div class="contact-form mb-24">
                                             <label class="contact-label" for="about">About <span
                                                     class="text-danger">*</span></label>
-                                            <textarea class="contact-textarea" name="about" id="about" cols="3" rows="3" required>{{ $transportation->about }}</textarea>
+                                            <textarea class="contact-textarea" name="about" id="about" cols="3" rows="3"
+                                                required>{{ $transportation->about }}</textarea>
                                         </div>
                                     </div>
 
@@ -104,9 +113,8 @@
                                     <div class="col-xl-12 col-lg-12">
                                         <div class="contact-form mb-24">
                                             <label class="contact-label" for="image_primary">Image (Primary)</label>
-                                            <input class="contact-input" type="file" accept="image/*"
-                                                name="image_primary" id="image_primary"
-                                                value="{{ $transportation->title }}">
+                                            <input class="contact-input" type="file" accept="image/*" name="image_primary"
+                                                id="image_primary" value="{{ $transportation->title }}">
                                         </div>
                                     </div>
 

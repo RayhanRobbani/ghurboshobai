@@ -10,10 +10,16 @@ class TourController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = Tour::query();
+
+        if ($request->has('location_id')) {
+            $query->where('location_id', $request->location_id);
+        }
+
         return view('tours.index', [
-            'tours' => Tour::latest()->get()
+            'tours' => $query->latest()->get()
         ]);
     }
 
